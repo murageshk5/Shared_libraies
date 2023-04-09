@@ -18,8 +18,6 @@
 def call (String aws_accout_id, String region, String ecr_reponame ) {
 
 
-    withCredentials([usernamePassword(credentialsId: 'dockerhub-auth', passwordVariable: 'DOCKERHUBPASS', usernameVariable: 'DOCKERHUB')]) {
-
         sh """
 
             aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${aws_accout_id} .dkr.ecr.${region}.amazonaws.com
@@ -30,7 +28,6 @@ def call (String aws_accout_id, String region, String ecr_reponame ) {
         """
         }
 
-}
 
 
 
