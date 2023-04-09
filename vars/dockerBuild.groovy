@@ -4,7 +4,7 @@ def call (String dockerhubUser, String ImageName, String ImageTag ) {
 
         docker image build -t ${dockerhubUser}/${ImageName} .
         docker image -t ${dockerhubUser}/${ImageName}:${ImageTag} 
-        docker image -t ${dockerhubUser}/${ImageName}:latest
+        docker image -t ${dockerhubUser}/${ImageName} ${dockerhubUser}/${ImageName}:latest
 
     """
 }
