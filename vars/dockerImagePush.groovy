@@ -1,7 +1,8 @@
 def call (String dockerhubUser, String ImageName, String ImageTag ) {
 
 
-        withCredentials([usernameColonPassword(credentialsId: 'dockerhub-auth', variable: 'dockerhubpass')]) {
+    withCredentials([usernamePassword(credentialsId: 'dockerhub-auth', passwordVariable: 'DOCKERHUBPASS', usernameVariable: 'DOCKERHUB')]) {
+        
         sh """
             docker image push ${dockerhubUser}/${ImageName}:${ImageTag}
             docker image push ${dockerhubUser}/${ImageName}:latest
